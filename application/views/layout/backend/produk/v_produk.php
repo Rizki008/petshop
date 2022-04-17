@@ -35,7 +35,7 @@
 										</li>
 									</ul>
 								</td>
-								<td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?= $value->harga ?></strong></td>
+								<td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Rp. <?= number_format($value->harga, 0) ?></strong></td>
 								<td><span class="badge bg-label-primary me-1"><?= $value->berat ?></span></td>
 								<td><span class="badge bg-label-primary me-1"><?= $value->stock ?></span></td>
 								<td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?= $value->deskripsi ?></strong></td>
