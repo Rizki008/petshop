@@ -95,7 +95,7 @@
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
-								<a href="<?= base_url('produk') ?>" class="menu-link">
+								<a href="<?= base_url('gambar') ?>" class="menu-link">
 									<div data-i18n="Basic">Gambar Produk</div>
 								</a>
 							</li>
@@ -108,7 +108,7 @@
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
-								<a href="pages-misc-error.html" class="menu-link">
+								<a href="<?= base_url('diskon') ?>" class="menu-link">
 									<div data-i18n="Error">Kelola Diskon</div>
 								</a>
 							</li>
@@ -161,7 +161,7 @@
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
-								<a href="form-layouts-vertical.html" class="menu-link">
+								<a href="<?= base_url('admin/user') ?>" class="menu-link">
 									<div data-i18n="Vertical Form">Data Pengelola</div>
 								</a>
 							</li>
