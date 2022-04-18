@@ -10,8 +10,13 @@
 					<li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
 				</ul>
 				<ul class="header-links pull-right">
-					<li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-					<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+					<li><a href="<?= base_url('pelanggan/logout') ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
+					<li><?php if ($this->session->userdata('email') == "") { ?>
+							<a href="<?= base_url('pelanggan/register') ?>"><i class="fa fa-user-o"></i> My Account</a>
+						<?php } else { ?>
+							<a href="#"><i class="fa fa-user-o"></i> <?= $this->session->userdata('nama'); ?></a>
+						<?php } ?>
+					</li>
 				</ul>
 			</div>
 		</div>
