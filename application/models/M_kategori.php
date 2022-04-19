@@ -18,6 +18,13 @@ class M_kategori extends CI_Model
 		$this->db->insert('kategori', $data);
 	}
 
+	public function detail($id_kategori)
+	{
+		$this->db->select('*');
+		$this->db->from('kategori');
+		$this->db->where('id_kategori', $id_kategori);
+		return $this->db->get()->row();
+	}
 	public function update($data)
 	{
 		$this->db->where('id_kategori', $data['id_kategori']);
