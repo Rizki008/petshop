@@ -137,6 +137,12 @@
 							</li>
 						</ul>
 					</li>
+					<li class="menu-item">
+						<a href="<?= base_url('admin/lokasi') ?>" class="menu-link">
+							<i class="menu-icon tf-icons bx bx-collection"></i>
+							<div data-i18n="Basic">Lokasi</div>
+						</a>
+					</li>
 
 					<!-- Forms & Tables -->
 					<li class="menu-header small text-uppercase"><span class="menu-header-text">Laporan &amp; User</span></li>
