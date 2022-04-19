@@ -38,6 +38,7 @@
 									<th>Expedisi</th>
 									<th>Biaya Ongkir</th>
 									<th>Total Bayar</th>
+									<th>No Resi</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -57,6 +58,7 @@
 												<span class="badge badge-primary">Menunggu Verifikasi</span>
 											<?php } ?>
 										</td>
+										<td></td>
 										<td>
 											<?php if ($value->status_bayar == 0) { ?>
 												<a href="<?= base_url('pesanan_saya/bayar/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Bayar</a>
@@ -76,29 +78,32 @@
 										</td>
 										<td></td>
 										<td></td>
+										<td></td>
 									</tr>
 								<?php } ?>
 								<?php foreach ($dikirim as $key => $value) { ?>
 									<tr>
 										<td><?= $value->no_order ?></td>
 										<td><?= $value->tgl_order ?></td>
+										<td><?= $value->expedisi ?><br><?= $value->paket ?><br><?= $value->estimasi ?></td>
 										<td class="text-warning">Rp. <?= number_format($value->ongkir, 0) ?><i class="mdi mdi-arrow-down"></i></td>
 										<td>Rp. <?= number_format($value->total_bayar, 0) ?>
 											<label class="badge badge-primary">Dikirim</label>
 										</td>
-										<td class="text-info"><?= $value->nama_pengirim ?></td>
-										<td></td>
+										<td class="text-info"><?= $value->no_resi ?></td>
+										<td><button class="btn btn-sm btn-flat btn-success" data-toggle="modal" data-target="#diterima<?= $value->id_transaksi ?>">Diterima</button></td>
 									</tr>
 								<?php } ?>
 								<?php foreach ($selesai as $key => $value) { ?>
 									<tr>
 										<td><?= $value->no_order ?></td>
 										<td><?= $value->tgl_order ?></td>
+										<td><?= $value->expedisi ?><br><?= $value->paket ?><br><?= $value->estimasi ?></td>
 										<td class="text-warning">Rp. <?= number_format($value->ongkir, 0) ?><i class="mdi mdi-arrow-down"></i></td>
 										<td>Rp. <?= number_format($value->total_bayar, 0) ?>
 											<label class="badge badge-success">Selesai</label>
 										</td>
-										<td class="text-info"><?= $value->nama_pengirim ?></td>
+										<td class="text-info"><?= $value->no_resi ?></td>
 										<td></td>
 									</tr>
 								<?php } ?>
@@ -108,5 +113,28 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><?php foreach ($dikirim as $key => $value) { ?>
+		<div class="modal fade" id="diterima<?= $value->id_transaksi ?>">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Pesanan Diterima</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						Apakah Anda Yakin Pesanan Sudah Diterima?
+					</div>
+					<div class="modal-footer justify-content-between">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
+						<a href="<?= base_url('pesanan_saya/diterima/' . $value->id_transaksi) ?>" class="btn btn-primary">Ya</a>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	<?php } ?>
 </div>
