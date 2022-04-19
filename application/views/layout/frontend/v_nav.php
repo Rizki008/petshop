@@ -36,7 +36,7 @@
 					<!-- Wishlist -->
 					<div>
 						<a href="<?= base_url('pesanan_saya') ?>">
-							<i class="fa fa-heart-o"></i>
+							<i class="fa fa-shopping-bag"></i>
 							<span>Pesanan Saya</span>
 							<div class="qty">2</div>
 						</a>
@@ -112,14 +112,12 @@
 		<!-- responsive-nav -->
 		<div id="responsive-nav">
 			<!-- NAV -->
+			<?php $kategori = $this->m_home->kategori_poroduk(); ?>
 			<ul class="main-nav nav navbar-nav">
 				<li class="active"><a href="<?= base_url() ?>">Home</a></li>
-				<li><a href="#">Hot Deals</a></li>
-				<li><a href="#">Categories</a></li>
-				<li><a href="#">Laptops</a></li>
-				<li><a href="#">Smartphones</a></li>
-				<li><a href="#">Cameras</a></li>
-				<li><a href="#">Accessories</a></li>
+				<?php foreach ($kategori as $key => $value) { ?>
+					<li><a href="<?= base_url('/home/kategori/' . $value->id_kategori) ?>"><?= $value->nama_kategori ?></a></li>
+				<?php } ?>
 			</ul>
 			<!-- /NAV -->
 		</div>
