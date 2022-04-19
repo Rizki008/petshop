@@ -10,7 +10,7 @@ class Home extends CI_Controller
 		parent::__construct();
 		//Load Dependencies
 		$this->load->model('m_home');
-		// $this->load->model('m_produk');
+		$this->load->model('m_kategori');
 		// $this->load->model('m_transaksi');
 	}
 
@@ -23,6 +23,7 @@ class Home extends CI_Controller
 			'best_deal_product' => $this->m_home->best_deal_product(),
 			'diskon' => $this->m_home->diskon(),
 			'best_deal_product_transaksi' => $this->m_home->best_deal_product_transaksi(),
+			'kategori' => $this->m_kategori->kategori(),
 			'isi' => 'v_home'
 		);
 		$this->load->view('layout/frontend/v_wrapper', $data, FALSE);
@@ -34,6 +35,7 @@ class Home extends CI_Controller
 		$data = array(
 			'title' => $kategori->nama_kategori,
 			'produk' => $this->m_home->produk_all($id_kategori),
+			'best_deal_product_transaksi' => $this->m_home->best_deal_product_transaksi(),
 			'isi' => 'layout/frontend/kategori/v_kategori_produk'
 		);
 		$this->load->view('layout/frontend/v_wrapper', $data, FALSE);
