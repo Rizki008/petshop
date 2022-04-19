@@ -25,24 +25,98 @@ class Kategori extends CI_Controller
 	// Add a new item
 	public function add()
 	{
+		$this->form_validation->set_rules('nama_kategori', 'Kategori Produk', 'required', array('required' => '%s Mohon Untuk Diisi'));
+
+		if ($this->form_validation->run() == TRUE) {
+
+			$config['upload_path'] = './assets/gambarkategori';
+			$config['allowed_types'] = 'gif|jpg|png|ico|jpeg';
+			$config['max_size']  = '5000';
+			$this->upload->initialize($config);
+			$field_name = "gambar";
+
+			if (!$this->upload->do_upload($field_name)) {
+				$data = array(
+					'title' => 'Tambah Kategori',
+					'error_upload' => $this->upload->display_errors(),
+					'isi' => 'layout/backend/kategori/v_add'
+				);
+				$this->load->view('layout/backend/v_wrapper', $data, FALSE);
+			} else {
+				$upload_data = array('uploads' => $this->upload->data());
+				$config['image_library'] = 'gd2';
+				$config['source_image'] = './assets/gambarkategori' . $upload_data['uploads']['file_name'];
+				$this->load->library('image_lib', $config);
+				$data = array(
+					'nama_kategori' => $this->input->post('nama_kategori'),
+					'gambar' => $upload_data['uploads']['file_name'],
+				);
+				$this->m_kategori->add($data);
+				$this->session->set_flashdata('pesan', 'Kategori Produk Berhasil Ditambah');
+				redirect('kategori');
+			}
+		}
 		$data = array(
-			'nama_kategori' => $this->input->post('nama_kategori'),
+			'title' => 'Tambah Kategori',
+			'isi' => 'layout/backend/kategori/v_add'
 		);
-		$this->m_kategori->add($data);
-		$this->session->set_flashdata('pesan', 'Kategori Produk Berhasil Ditambah');
-		redirect('kategori');
+		$this->load->view('layout/backend/v_wrapper', $data, FALSE);
 	}
 
 	//Update one item
 	public function update($id_kategori = NULL)
 	{
+		$this->form_validation->set_rules('nama_kategori', 'Kategori Produk', 'required', array('required' => '%s Mohon Untuk Diisi'));
+
+		if ($this->form_validation->run() == TRUE) {
+
+			$config['upload_path'] = './assets/gambarkategori';
+			$config['allowed_types'] = 'gif|jpg|png|ico|jpeg';
+			$config['max_size']  = '5000';
+			$this->upload->initialize($config);
+			$field_name = "gambar";
+
+			if (!$this->upload->do_upload($field_name)) {
+				$data = array(
+					'title' => 'Edit Kategori',
+					'kategori' => $this->m_kategori->detail($id_kategori),
+					'error_upload' => $this->upload->display_errors(),
+					'isi' => 'layout/backend/kategori/v_edit'
+				);
+				$this->load->view('layout/backend/v_wrapper', $data, FALSE);
+			} else {
+				//hapus gambar dari folder
+				$kategori = $this->m_kategori->detail($id_kategori);
+				if ($kategori->gambar !== "") {
+					unlink('./assets/gambarkategori/' . $kategori->gambar);
+				}
+				$upload_data = array('uploads' => $this->upload->data());
+				$config['image_library'] = 'gd2';
+				$config['source_image'] = './assets/gambarkategori' . $upload_data['uploads']['file_name'];
+				$this->load->library('image_lib', $config);
+				$data = array(
+					'id_kategori' => $id_kategori,
+					'nama_kategori' => $this->input->post('nama_kategori'),
+					'gambar' => $upload_data['uploads']['file_name'],
+				);
+				$this->m_kategori->update($data);
+				$this->session->set_flashdata('pesan', 'Kategori Produk berhasil di update');
+				redirect('kategori');
+			}
+			$data = array(
+				'id_kategori' => $id_kategori,
+				'nama_kategori' => $this->input->post('nama_kategori'),
+			);
+			$this->m_kategori->update($data);
+			$this->session->set_flashdata('pesan', 'Kategori Produk berhasil di update');
+			redirect('kategori');
+		}
 		$data = array(
-			'id_kategori' => $id_kategori,
-			'nama_kategori' => $this->input->post('nama_kategori')
+			'title' => 'Edit Kategori',
+			'kategori' => $this->m_kategori->detail($id_kategori),
+			'isi' => 'layout/backend/kategori/v_edit'
 		);
-		$this->m_kategori->update($data);
-		$this->session->set_flashdata('pesan', 'Kategori Produk berhasil di update');
-		redirect('kategori');
+		$this->load->view('layout/backend/v_wrapper', $data, FALSE);
 	}
 
 	//Delete one item
