@@ -21,40 +21,49 @@
 <!-- /BREADCRUMB -->
 
 <!-- SECTION -->
+
+
 <div class="section">
 	<!-- container -->
 	<div class="container">
 		<!-- row -->
+
 		<div class="row">
-			<?php foreach ($gambar as $key => $value) { ?>
-				<div class="col-md-5 col-md-push-2">
-					<div id="product-main-img">
+			<div class="col-md-5 col-md-push-2">
+				<div id="product-main-img">
+					<?php foreach ($gambar as $key => $value) { ?>
 						<div class="product-preview">
 							<img src="<?= base_url('assets/gambarproduk/' . $value->img) ?>" alt="">
 						</div>
-					</div>
+					<?php } ?>
 				</div>
-			<?php } ?>
-			<!-- /Product main img -->
+			</div>
+			<!-- Product thumb imgs -->
+			<div class="col-md-2  col-md-pull-5">
+				<div id="product-imgs">
+					<?php foreach ($gambar as $key => $value) { ?>
+						<div class="product-preview">
+							<img src="<?= base_url('assets/gambarproduk/' . $value->img) ?>" alt="">
+						</div>
+					<?php } ?>
+				</div>
+			</div>
 
+
+			<!-- /Product main img -->
+			<?php
+			echo form_open('belanja/add');
+			echo form_hidden('id', $produk->id_produk);
+			echo form_hidden('price', $produk->harga - $produk->diskon);
+			echo form_hidden('name', $produk->nama_produk);
+			echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
+			?>
 			<!-- Product details -->
 			<div class="col-md-5">
 				<div class="product-details">
-					<?php
-					echo form_open('belanja/add');
-					echo form_hidden('id', $produk->id_produk);
-					echo form_hidden('price', $produk->harga - $produk->diskon);
-					echo form_hidden('name', $produk->nama_produk);
-					echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
-					?>
 					<h2 class="product-name"><?= $produk->nama_produk ?></h2>
 					<div>
 						<div class="product-rating">
-							<!-- <i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star-o"></i> -->
 						</div>
 						<a class="review-link" href="#">10 Review(s) | Add your review</a>
 					</div>
@@ -63,7 +72,6 @@
 						<span class="product-available">In Stock</span>
 					</div>
 					<p><?= $produk->deskripsi ?></p>
-
 					<div class="add-to-cart">
 						<div class="qty-label">
 							Qty
@@ -75,15 +83,14 @@
 						</div>
 						<button type="submit" class="add-to-cart-btn" data-name="<?= $produk->nama_produk ?>" data-price="<?= ($produk->diskon > 0) ? ($produk->harga - $produk->diskon) : $produk->harga ?>" data-id="<?= $produk->id_produk ?>"><i class="fa fa-shopping-cart"></i> add to cart</button>
 					</div>
-
 					<ul class="product-links">
 						<li>Category:</li>
 						<li><a href="#"><?= $produk->nama_kategori ?></a></li>
 					</ul>
-					<?php echo form_close(); ?>
 				</div>
 			</div>
 			<!-- /Product details -->
+			<?php echo form_close(); ?>
 
 			<!-- Product tab -->
 			<div class="col-md-12">
@@ -309,7 +316,6 @@
 			</div>
 			<?php if (count($related_products) > 0) : ?>
 				<?php foreach ($related_products as $product) : ?>
-					<!-- product -->
 					<div class="col-md-3 col-xs-6">
 						<?php
 						echo form_open('belanja/add');
@@ -322,7 +328,9 @@
 							<div class="product-img">
 								<img src="<?= base_url('assets/gambar/' . $product->gambar) ?>" alt="">
 								<div class="product-label">
-									<span class="sale">-30%</span>
+									<?php if ($product->diskon > 0) : ?>
+										<span class="sale"><?= count_percent_discount($product->diskon, $product->harga, 0) ?>%</span>
+									<?php endif; ?>
 								</div>
 							</div>
 							<div class="product-body">
@@ -340,7 +348,6 @@
 						</div>
 						<?php echo form_close() ?>
 					</div>
-					<!-- /product -->
 				<?php endforeach; ?>
 			<?php endif; ?>
 
