@@ -59,7 +59,7 @@ class M_home extends CI_Model
 
 	public function related_products($id_produk)
 	{
-		return $this->db->where(array('id_produk !=' => $id_produk))->limit(5)->get('produk')->result();
+		return $this->db->where(array('id_produk !=' => $id_produk))->limit(4)->get('produk')->result();
 	}
 
 	//diskon produk
@@ -77,6 +77,7 @@ class M_home extends CI_Model
 	{
 		$this->db->select('*');
 		$this->db->from('produk');
+		$this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
 		$this->db->where('diskon>=1 and stock>=1');
 		$this->db->order_by('id_produk', 'desc');
 		return $this->db->get()->result();
