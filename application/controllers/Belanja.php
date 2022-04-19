@@ -70,8 +70,13 @@ class Belanja extends CI_Controller
 		//proteksi halaman
 		$this->pelanggan_login->proteksi_halaman();
 
+		$this->form_validation->set_rules('nama_pelanggan', 'Nama Penerima', 'required', array('required' => '%s Mohon Untuk Diisi !!!'));
+		$this->form_validation->set_rules('provinsi', 'Provinsi', 'required', array('required' => '%s Mohon Untuk Diisi !!!'));
+		$this->form_validation->set_rules('kota', 'Kota', 'required', array('required' => '%s Mohon Untuk Diisi !!!'));
+		$this->form_validation->set_rules('expedisi', 'Expedisi', 'required', array('required' => '%s Mohon Untuk Diisi !!!'));
+		$this->form_validation->set_rules('paket', 'Paket', 'required', array('required' => '%s Mohon Untuk Diisi !!!'));
 		$this->form_validation->set_rules('alamat', 'Alamat Lengkap', 'required', array('required' => '%s Mohon Untuk Diisi !!!'));
-		$this->form_validation->set_rules('no_tlp', 'No Telpon', 'required|min_length[11]|max_length[13]', array(
+		$this->form_validation->set_rules('no_tlpn', 'No Telpon', 'required|min_length[11]|max_length[13]', array(
 			'required' => '%s Mohon Untuk Diisi !!!',
 			'min_length' => '%s Minimal 11 angka !!!',
 			'max_length' => '%s Maksimal 13 angka !!!',
@@ -82,9 +87,9 @@ class Belanja extends CI_Controller
 			$data = array(
 				'title' => 'Langsung Beli',
 				// 'lokasi' => $this->m_lokasi->lokasi(),
-				'isi' => 'layout/frontend/cart/v_cekouth'
+				'isi' => 'v_cekouth'
 			);
-			$this->load->view('layout/frontend/v_wrapper', $data, FALSE);
+			$this->load->view('v_cekouth', $data, FALSE);
 		} else {
 			//simpan ke tabel transaksi
 			$data = array(
@@ -93,7 +98,12 @@ class Belanja extends CI_Controller
 				'no_order' => $this->input->post('no_order'),
 				'tgl_order' => date('Y-m-d'),
 				'nama_pelanggan' => $this->input->post('nama_pelanggan'),
-				'no_tlp' => $this->input->post('no_tlp'),
+				'no_tlpn' => $this->input->post('no_tlpn'),
+				'provinsi' => $this->input->post('provinsi'),
+				'kota' => $this->input->post('kota'),
+				'paket' => $this->input->post('paket'),
+				'expedisi' => $this->input->post('expedisi'),
+				'estimasi' => $this->input->post('estimasi'),
 				'alamat' => $this->input->post('alamat'),
 				'kode_pos' => $this->input->post('kode_pos'),
 				'ongkir' => $this->input->post('ongkir'),

@@ -15,6 +15,12 @@ class M_transaksi extends CI_Model
 		$this->db->insert('rinci_transaksi', $data_rinci);
 	}
 
+	public function upload_buktibayar($data)
+	{
+		$this->db->where('id_transaksi', $data['id_transaksi']);
+		$this->db->update('transaksi', $data);
+	}
+
 	public function belum_bayar()
 	{
 		$this->db->select('*');
@@ -61,5 +67,12 @@ class M_transaksi extends CI_Model
 		$this->db->from('transaksi');
 		$this->db->where('id_transaksi', $id_transaksi);
 		return $this->db->get()->row();
+	}
+
+	public function rekening()
+	{
+		$this->db->select('*');
+		$this->db->from('rekening');
+		return $this->db->get()->result();
 	}
 }

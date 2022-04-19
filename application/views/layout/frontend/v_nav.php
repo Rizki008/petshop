@@ -7,8 +7,8 @@
 			<!-- LOGO -->
 			<div class="col-md-3">
 				<div class="header-logo">
-					<a href="#" class="logo">
-						<img src="./img/logo.png" alt="">
+					<a href="<?= base_url() ?>" class="logo">
+						<img src="<?= base_url() ?>frontend/img/logo.png" alt="">
 					</a>
 				</div>
 			</div>
@@ -35,9 +35,9 @@
 				<div class="header-ctn">
 					<!-- Wishlist -->
 					<div>
-						<a href="#">
+						<a href="<?= base_url('pesanan_saya') ?>">
 							<i class="fa fa-heart-o"></i>
-							<span>Your Wishlist</span>
+							<span>Pesanan Saya</span>
 							<div class="qty">2</div>
 						</a>
 					</div>
@@ -113,7 +113,7 @@
 		<div id="responsive-nav">
 			<!-- NAV -->
 			<ul class="main-nav nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
+				<li class="active"><a href="<?= base_url() ?>">Home</a></li>
 				<li><a href="#">Hot Deals</a></li>
 				<li><a href="#">Categories</a></li>
 				<li><a href="#">Laptops</a></li>

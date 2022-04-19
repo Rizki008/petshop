@@ -15,11 +15,11 @@ class Pesanan_saya extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Pesanan saya',
-			'belum_bayar' => $this->m_transaksi->belum_bayar(),
+			'pesanan' => $this->m_transaksi->belum_bayar(),
 			'diproses' => $this->m_transaksi->diproses(),
 			'dikirim' => $this->m_transaksi->dikirim(),
 			'selesai' => $this->m_transaksi->selesai(),
-			'batalpesan' => $this->m_transaksi->batalpesan(),
+			// 'batalpesan' => $this->m_transaksi->batalpesan(),
 			'rekening' => $this->m_transaksi->rekening(),
 			'isi' => 'layout/frontend/cart/v_pesanan_saya'
 		);
@@ -29,11 +29,11 @@ class Pesanan_saya extends CI_Controller
 	public function bayar($id_transaksi)
 	{
 		$this->form_validation->set_rules('atas_nama', 'Atas Nama', 'required', array('required' => '%s Mohon Untuk Diisi !!!'));
-		$this->form_validation->set_rules('no_rek', 'No Rekening', 'required|min_length[10]|max_length[16]', array(
-			'required' => '%s Mohon Untuk Diisi !!!',
-			'min_length' => '%s Minumal 10 Nomor !!!',
-			'max_length' => '%s Maksimal 16 Nomor !!!'
-		));
+		// $this->form_validation->set_rules('no_rek', 'No Rekening', 'required|min_length[10]|max_length[16]', array(
+		// 	'required' => '%s Mohon Untuk Diisi !!!',
+		// 	'min_length' => '%s Minumal 10 Nomor !!!',
+		// 	'max_length' => '%s Maksimal 16 Nomor !!!'
+		// ));
 
 
 		if ($this->form_validation->run() == TRUE) {
@@ -60,7 +60,7 @@ class Pesanan_saya extends CI_Controller
 					'id_transaksi' => $id_transaksi,
 					'atas_nama' => $this->input->post('atas_nama'),
 					'nama_bank' => $this->input->post('nama_bank'),
-					'no_rek' => $this->input->post('no_rek'),
+					'jml_bayar' => $this->input->post('jml_bayar'),
 					'status_bayar' => '1',
 					'bukti_bayar' => $upload_data['uploads']['file_name'],
 				);
@@ -79,27 +79,27 @@ class Pesanan_saya extends CI_Controller
 		$this->load->view('layout/frontend/v_wrapper', $data, FALSE);
 	}
 
-	// public function diterima($id_transaksi)
-	// {
-	// 	$data = array(
-	// 		'id_transaksi' => $id_transaksi,
-	// 		'status_order' => 3
-	// 	);
-	// 	$this->m_pesanan_masuk->update_order($data);
-	// 	$this->session->set_flashdata('pesan', 'Pesanan Telah Diterima');
-	// 	redirect('pesanan_saya');
-	// }
+	public function diterima($id_transaksi)
+	{
+		$data = array(
+			'id_transaksi' => $id_transaksi,
+			'status_order' => 3
+		);
+		$this->m_pesanan_masuk->update_order($data);
+		$this->session->set_flashdata('pesan', 'Pesanan Telah Diterima');
+		redirect('pesanan_saya');
+	}
 
-	// public function dibatalkan($id_transaksi)
-	// {
-	// 	$data = array(
-	// 		'id_transaksi' => $id_transaksi,
-	// 		'status_order' => 4
-	// 	);
-	// 	$this->m_pesanan_masuk->update_order($data);
-	// 	$this->session->set_flashdata('pesan', 'Pesanan Telah Dibatalkan');
-	// 	redirect('pesanan_saya');
-	// }
+	public function dibatalkan($id_transaksi)
+	{
+		$data = array(
+			'id_transaksi' => $id_transaksi,
+			'status_order' => 4
+		);
+		$this->m_pesanan_masuk->update_order($data);
+		$this->session->set_flashdata('pesan', 'Pesanan Telah Dibatalkan');
+		redirect('pesanan_saya');
+	}
 
 	//detail data order
 	public function detail($no_order)
