@@ -5,45 +5,19 @@
 		<!-- row -->
 		<div class="row">
 			<!-- shop -->
-			<div class="col-md-4 col-xs-6">
-				<div class="shop">
-					<div class="shop-img">
-						<img src="<?= base_url() ?>frontend/img/shop01.png" alt="">
-					</div>
-					<div class="shop-body">
-						<h3>Laptop<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
-				</div>
-			</div>
-			<!-- /shop -->
-
-			<!-- shop -->
-			<div class="col-md-4 col-xs-6">
-				<div class="shop">
-					<div class="shop-img">
-						<img src="<?= base_url() ?>frontend/img/shop03.png" alt="">
-					</div>
-					<div class="shop-body">
-						<h3>Accessories<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+			<?php foreach ($kategori as $key => $value) { ?>
+				<div class="col-md-4 col-xs-6">
+					<div class="shop">
+						<div class="shop-img">
+							<img src="<?= base_url('assets/gambarkategori/' . $value->gambar) ?>" alt="">
+						</div>
+						<div class="shop-body">
+							<h3><?= $value->nama_kategori ?></h3>
+							<a href="<?= base_url('/home/kategori/' . $value->id_kategori) ?>" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+						</div>
 					</div>
 				</div>
-			</div>
-			<!-- /shop -->
-
-			<!-- shop -->
-			<div class="col-md-4 col-xs-6">
-				<div class="shop">
-					<div class="shop-img">
-						<img src="<?= base_url() ?>frontend/img/shop02.png" alt="">
-					</div>
-					<div class="shop-body">
-						<h3>Cameras<br>Collection</h3>
-						<a href="#" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
-					</div>
-				</div>
-			</div>
+			<?php } ?>
 			<!-- /shop -->
 		</div>
 		<!-- /row -->
@@ -62,12 +36,12 @@
 				<div class="section-title">
 					<h3 class="title">New Products</h3>
 					<div class="section-nav">
-						<ul class="section-tab-nav tab-nav">
+						<!-- <ul class="section-tab-nav tab-nav">
 							<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
 							<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
 							<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
 							<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>
@@ -96,14 +70,20 @@
 											<div class="product-img">
 												<img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" alt="<?= $value->nama_produk ?>">
 												<div class="product-label">
-													<span class="sale">-30%</span>
+													<?php if ($value->diskon > 0) : ?>
+														<span class="sale"><?= count_percent_discount($value->diskon, $value->harga, 0) ?>%</span>
+													<?php endif; ?>
 													<span class="new">NEW</span>
 												</div>
 											</div>
 											<div class="product-body">
 												<p class="product-category"><?= $value->nama_kategori ?></p>
 												<h3 class="product-name"><a href="#"><?= $value->nama_produk ?></a></h3>
-												<h4 class="product-price">Rp. <?= number_format($value->harga, 0) ?> <del class="product-old-price">$990.00</del></h4>
+												<h4 class="product-price"><?php if ($value->diskon > 0) : ?>
+														<del class="product-old-price">Rp. <?= number_format($value->harga, 0) ?></del><span>Rp. <?= number_format($value->harga - $value->diskon, 0) ?></span>
+														<?php else : ?>Rp. <?= number_format($value->harga, 0) ?>
+													<?php endif; ?>
+												</h4>
 												<div class="product-rating">
 												</div>
 												<div class="product-btns">
@@ -192,12 +172,12 @@
 				<div class="section-title">
 					<h3 class="title">Top selling</h3>
 					<div class="section-nav">
-						<ul class="section-tab-nav tab-nav">
+						<!-- <ul class="section-tab-nav tab-nav">
 							<li class="active"><a data-toggle="tab" href="#tab2">Laptops</a></li>
 							<li><a data-toggle="tab" href="#tab2">Smartphones</a></li>
 							<li><a data-toggle="tab" href="#tab2">Cameras</a></li>
 							<li><a data-toggle="tab" href="#tab2">Accessories</a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>
@@ -212,26 +192,23 @@
 							<div class="products-slick" data-nav="#slick-nav-2">
 								<!-- product -->
 								<?php if (count($best_deal_product_transaksi) > 0) : ?>
-									<?php foreach ($$best_deal_product_transaksi as $key => $value) { ?>
+									<?php foreach ($best_deal_product_transaksi as $key => $value) { ?>
 										<div class="product">
 											<?php echo form_open('belanja/add');
 											echo form_hidden('id', $value->id_produk);
 											echo form_hidden('qty', 1);
-											echo form_hidden('price', $value->harga - $value->diskon);
+											echo form_hidden('price', $value->harga);
 											echo form_hidden('name', $value->nama_produk);
 											echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
 											?>
 											<div class="product-img">
-												<img src="<?= base_url() ?>frontend/img/product06.png" alt="">
+												<img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" alt="">
 												<div class="product-label">
-													<span class="sale">-30%</span>
-													<span class="new">NEW</span>
 												</div>
 											</div>
 											<div class="product-body">
-												<p class="product-category"><?= $value->nama_kategori ?></p>
 												<h3 class="product-name"><a href="#"><?= $value->nama_produk ?></a></h3>
-												<h4 class="product-price">Rp. <?= number_format($value->harga - $value->diskon, 0) ?> <del class="product-old-price">Rp. <?= number_format($value->harga, 0) ?></del></h4>
+												<h4 class="product-price">Rp. <?= number_format($value->harga, 0) ?></h4>
 												<div class="product-rating">
 												</div>
 												<div class="product-btns">
@@ -239,7 +216,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button type="submit" class="add-to-cart-btn" data-name="<?= $value->nama_produk ?>" data-price="<?= ($value->diskon > 0) ? ($value->harga - $value->diskon) : $value->harga ?>" data-id="<?= $value->id_produk ?>"><i class="fa fa-shopping-cart"></i> add to cart</button>
+												<button type="submit" class="add-to-cart-btn" data-name="<?= $value->nama_produk ?>" data-price="<?= $value->harga ?>" data-id="<?= $value->id_produk ?>"><i class="fa fa-shopping-cart"></i> add to cart</button>
 											</div>
 											<?php echo form_close(); ?>
 										</div>
@@ -270,7 +247,7 @@
 		<div class="row">
 			<div class="col-md-4 col-xs-6">
 				<div class="section-title">
-					<h4 class="title">Top selling</h4>
+					<h4 class="title">Diskon</h4>
 					<div class="section-nav">
 						<div id="slick-nav-3" class="products-slick-nav"></div>
 					</div>
@@ -278,34 +255,34 @@
 				<?php foreach ($diskon as $key => $value) { ?>
 					<div class="products-widget-slick" data-nav="#slick-nav-3">
 						<div>
-							<<?php
-								echo form_open('belanja/add');
-								echo form_hidden('id', $value->id_produk);
-								echo form_hidden('qty', 1);
-								echo form_hidden('price', $value->harga - $value->diskon);
-								echo form_hidden('name', $value->nama_produk);
-								echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
-								?> <div class="product-widget">
+							<?php
+							echo form_open('belanja/add');
+							echo form_hidden('id', $value->id_produk);
+							echo form_hidden('qty', 1);
+							echo form_hidden('price', $value->harga - $value->diskon);
+							echo form_hidden('name', $value->nama_produk);
+							echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
+							?> <div class="product-widget">
 								<div class="product-img">
 									<img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" alt="">
 								</div>
 								<div class="product-body">
 									<p class="product-category"><?= $value->nama_kategori ?></p>
-									<h3 class="product-name"><a href="#"><?= $value->nama_produk ?></a></h3>
+									<h3 class="product-name"><a href="<?= base_url('home/detail_produk/' . $value->id_produk) ?>"><?= $value->nama_produk ?></a></h3>
 									<h4 class="product-price">Rp. <?= number_format($value->harga - $value->diskon) ?> <del class="product-old-price">Rp. <?= number_format($value->harga, 0) ?></del></h4>
 								</div>
+							</div>
+							<?php echo form_close() ?>
 						</div>
-						<?php echo form_close() ?>
 					</div>
+				<?php } ?>
 			</div>
-		<?php } ?>
-		</div>
 
-		<div class="clearfix visible-sm visible-xs"></div>
+			<div class="clearfix visible-sm visible-xs"></div>
+		</div>
+		<!-- /row -->
 	</div>
-	<!-- /row -->
-</div>
-<!-- /container -->
+	<!-- /container -->
 </div>
 <!-- /SECTION -->
 
