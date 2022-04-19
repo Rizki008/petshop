@@ -103,75 +103,42 @@
 <script src="<?= base_url() ?>frontend/js/nouislider.min.js"></script>
 <script src="<?= base_url() ?>frontend/js/jquery.zoom.min.js"></script>
 <script src="<?= base_url() ?>frontend/js/main.js"></script>
-<script>
-	$(document).ready(function() {
-		$.ajax({
-			type: "POST",
-			url: "<?= base_url('lokasi/provinsi') ?>",
-			success: function(hasil_provinsi) {
-				// console.log(hasil_provinsi);
-				$("select[name=provinsi]").html(hasil_provinsi);
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function() {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
 			}
-		});
-		$("select[name=provinsi]").on("change", function() {
-			var id_provinsi_terpilih = $("option:selected", this).attr("id_provinsi");
-
-			$.ajax({
-				type: "POST",
-				url: "<?= base_url('lokasi/kota') ?>",
-				data: 'id_provinsi=' + id_provinsi_terpilih,
-				success: function(hasil_kota) {
-					// console.log(hasil_kota);
-					$("select[name=kota]").html(hasil_kota);
-				}
-			});
-		});
-
-		$("select[name=kota]").on("change", function() {
-			$.ajax({
-				type: "POST",
-				url: "<?= base_url('lokasi/expedisi') ?>",
-				success: function(hasil_expedisi) {
-					$("select[name=expedisi]").html(hasil_expedisi);
-				}
-			});
-		});
-
-		$("select[name=expedisi]").on("change", function() {
-			var expedisi_terpilih = $("select[name = expedisi]").val()
-			var id_kota_tujuan_terpilih = $("option:select", "select[name=kota]").attr('id_kota');
-			var tot_berat = <?= $total_berat ?>;
-
-			$.ajax({
-				type: "POST",
-				url: "<?= base_url('lokasi/paket') ?>",
-				data: 'expedisi=' + expedisi_terpilih + '$id_kota=' + id_kota_tujuan_terpilih + '&berart=' + tot_berat,
-				success: function(hasil_paket) {
-					console.log(hasil_paket);
-					$("select[name=paket]").html(hasil_paket);
-				}
-			});
-		});
-
-		$("select[name=paket]").on("change", function() {
-			var dataongkir = $("option:selected", this).attr('ongkir');
-			var reverse = dataongkir.toString().split('').reverse().join(''),
-				ribuan_ongkir = reverse.match(/\d{1,3}/g);
-			ribuan_ongkir = ribuan_ongkir.join(',').split('').reverse().join();
-			$("#ongkir").html("Rp. " + ribuan_ongkir);
-
-			var data_total_bayar = parseInt(dataongkir) + parseInt(<?= $this->cart->total() ?>);
-			var reverse2 = data_total_bayar.toString().split('').reverse().join(''),
-				ribuan_bayar = reverse2.match(/\d{1,3}/g);
-			ribuan_bayar = ribuan_bayar.join(',').split('').reverse().join('');
-			$("#total_bayar").html("Rp. " + ribuan_bayar);
-
-			var estimasi = $("option:selected", this).attr('estimasi');
-			$("input[name=estimasi]").val(estimasi);
-			$("input[name=ongkir]").val(dataongkir);
-			$("input[name=total_bayar]").val(data_total_bayar);
-		});
-	});
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function(msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	} else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
 </script>
 </body>
 
