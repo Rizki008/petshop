@@ -70,7 +70,7 @@ class Gambar extends CI_Controller
 	public function delete($id_produk, $id_gambar)
 	{
 		//hapus gambar
-		$gambar = $this->m_gambarproduk->detail($id_gambar);
+		$gambar = $this->m_gambar->detail($id_gambar);
 		if ($gambar->gambar !== "") {
 			unlink('./assets/gambarproduk/' . $gambar->gambar);
 		}
