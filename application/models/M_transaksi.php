@@ -75,4 +75,22 @@ class M_transaksi extends CI_Model
 		$this->db->from('rekening');
 		return $this->db->get()->result();
 	}
+
+	public function pesanan_detail($no_order)
+	{
+		$this->db->select('*');
+		$this->db->from('transaksi');
+		$this->db->join('rinci_transaksi', 'transaksi.no_order = rinci_transaksi.no_order', 'left');
+		$this->db->join('produk', 'rinci_transaksi.id_produk = produk.id_produk', 'left');
+		$this->db->where('transaksi.no_order', $no_order);
+		return $this->db->get()->result();
+	}
+
+	public function pesanan($no_order)
+	{
+		$this->db->select('*');
+		$this->db->from('transaksi');
+		$this->db->where('transaksi.no_order', $no_order);
+		return $this->db->get()->result();
+	}
 }
