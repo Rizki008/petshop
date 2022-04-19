@@ -9,6 +9,8 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_admin');
+		$this->load->model('m_transaksi');
+		$this->load->model('m_pesanan_masuk');
 	}
 	public function index()
 	{
@@ -89,11 +91,41 @@ class Admin extends CI_Controller
 			$this->session->set_flashdata('pesan', 'Lokasi Toko berhasil di update');
 			redirect('admin/lokasi');
 		}
-		// $data = array(
-		// 	'title' => 'Setting',
-		// 	'lokasi' => $this->m_admin->data_lokasi(),
-		// 	'isi' => 'layout/backend/lokasi/v_lokasi'
-		// );
-		// $this->load->view('layout/backend/v_wrapper', $data, FALSE);
+	}
+
+	public function proses($id_transaksi)
+	{
+		$data = array(
+			'id_transaksi' => $id_transaksi,
+			'status_order' => 1
+		);
+		$this->m_pesanan_masuk->update_order($data);
+		$this->session->set_flashdata('pesan', 'Pesanan Berhasil Di proses');
+		redirect('pesanan_masuk');
+	}
+
+	public function kirim($id_transaksi)
+	{
+		$data = array(
+			'id_transaksi' => $id_transaksi,
+			'no_resi' => $this->input->post('no_resi'),
+			'status_order' => 2
+		);
+		$this->m_pesanan_masuk->update_order($data);
+		$this->session->set_flashdata('pesan', 'Pesanan Berhasil Di kirim');
+		redirect('pesanan_masuk');
+	}
+
+	public function detail($no_order)
+	{
+		$data = array(
+			'title' => 'Pesanan',
+			'pesanan' => $this->m_transaksi->pesanan($no_order),
+			'pesanan_detail' => $this->m_transaksi->pesanan_detail($no_order),
+			'diproses_pesanan' => $this->m_pesanan_masuk->diproses_pesanan(),
+			'proses_kirim' => $this->m_pesanan_masuk->proses_kirim(),
+			'isi' =>  'layout/backend/transaksi/v_detail'
+		);
+		$this->load->view('layout/backend/v_wrapper', $data, FALSE);
 	}
 }
