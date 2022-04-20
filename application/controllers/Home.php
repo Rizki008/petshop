@@ -20,7 +20,7 @@ class Home extends CI_Controller
 		$data = array(
 			'title' => 'PETSHOP',
 			'produk' => $this->m_home->produk(),
-			'best_deal_product' => $this->m_home->best_deal_product(),
+			// 'best_deal_product' => $this->m_home->best_deal_product(),
 			'diskon' => $this->m_home->diskon(),
 			'best_deal_product_transaksi' => $this->m_home->best_deal_product_transaksi(),
 			'kategori' => $this->m_kategori->kategori(),

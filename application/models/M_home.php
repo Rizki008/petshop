@@ -9,8 +9,9 @@ class M_home extends CI_Model
 		$this->db->select('*');
 		$this->db->from('produk');
 		$this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
+		$this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
 		$this->db->where('stock>=1');
-		$this->db->order_by('id_produk', 'desc');
+		$this->db->order_by('produk.id_produk', 'desc');
 		$this->db->limit(8);
 		return $this->db->get()->result();
 	}
@@ -28,7 +29,8 @@ class M_home extends CI_Model
 		$this->db->select('*');
 		$this->db->from('produk');
 		$this->db->join('kategori', 'produk.id_kategori = produk.id_kategori', 'left');
-		$this->db->where('id_produk', $id_produk);
+		$this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
+		$this->db->where('produk.id_produk', $id_produk);
 		return $this->db->get()->row();
 	}
 
@@ -53,13 +55,22 @@ class M_home extends CI_Model
 		$this->db->select('*');
 		$this->db->from('produk');
 		$this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
+		$this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
 		$this->db->where('produk.id_kategori', $id_kategori);
 		return $this->db->get()->result();
 	}
 
 	public function related_products($id_produk)
 	{
-		return $this->db->where(array('id_produk !=' => $id_produk))->limit(4)->get('produk')->result();
+		$this->db->select('*');
+		$this->db->from('produk');
+		$this->db->join('kategori', 'produk.id_kategori = produk.id_kategori', 'left');
+		$this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
+		$this->db->where('produk.id_produk', $id_produk);
+		$this->db->limit(4);
+		return $this->db->get()->result();
+
+		// return $this->db->where(array('id_produk !=' => $id_produk))->limit(4)->get('produk')->result();
 	}
 
 	//diskon produk
@@ -78,8 +89,9 @@ class M_home extends CI_Model
 		$this->db->select('*');
 		$this->db->from('produk');
 		$this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
+		$this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
 		$this->db->where('diskon>=1 and stock>=1');
-		$this->db->order_by('id_produk', 'desc');
+		$this->db->order_by('produk.id_produk', 'desc');
 		return $this->db->get()->result();
 	}
 
@@ -87,9 +99,10 @@ class M_home extends CI_Model
 	public function best_deal_product_transaksi()
 	{
 		$this->db->select_sum('qty');
-		$this->db->select('produk.gambar, produk.nama_produk, produk.harga, produk.diskon, produk.id_produk');
+		$this->db->select('produk.gambar, produk.nama_produk, produk.harga, produk.id_produk');
 		$this->db->from('rinci_transaksi');
 		$this->db->join('produk', 'rinci_transaksi.id_produk = produk.id_produk', 'left');
+		$this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
 		$this->db->group_by('rinci_transaksi.id_produk');
 		$this->db->limit(4);
 		return $this->db->get()->result();
