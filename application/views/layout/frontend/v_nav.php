@@ -61,7 +61,7 @@
 								?>
 									<div class="product-widget">
 										<div class="product-img">
-											<img src="<?= base_url('assets/gambar/' . $produk->gambar) ?>" alt="">
+											<img src="<?= base_url('assets/gambar/' . $produk->images) ?>" alt="">
 										</div>
 										<div class="product-body">
 											<h3 class="product-name"><a href="#"><?= $value['name'] ?></a></h3>
