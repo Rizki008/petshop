@@ -68,7 +68,7 @@
 											echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
 											?>
 											<div class="product-img">
-												<img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" alt="<?= $value->nama_produk ?>">
+												<img src="<?= base_url('assets/gambar/' . $value->images) ?>" alt="<?= $value->nama_produk ?>">
 												<div class="product-label">
 													<?php if ($value->diskon > 0) : ?>
 														<span class="sale"><?= count_percent_discount($value->diskon, $value->harga, 0) ?>%</span>
@@ -202,7 +202,7 @@
 											echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
 											?>
 											<div class="product-img">
-												<img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" alt="">
+												<img src="<?= base_url('assets/gambar/' . $value->images) ?>" alt="">
 												<div class="product-label">
 												</div>
 											</div>
@@ -264,7 +264,7 @@
 							echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
 							?> <div class="product-widget">
 								<div class="product-img">
-									<img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" alt="">
+									<img src="<?= base_url('assets/gambar/' . $value->images) ?>" alt="">
 								</div>
 								<div class="product-body">
 									<p class="product-category"><?= $value->nama_kategori ?></p>
