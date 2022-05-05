@@ -8,6 +8,7 @@ class Produk extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_produk');
+		$this->load->model('m_diskon');
 		$this->load->model('m_kategori');
 	}
 
@@ -58,9 +59,19 @@ class Produk extends CI_Controller
 					'berat' => $this->input->post('berat'),
 					'stock' => $this->input->post('stock'),
 					'deskripsi' => $this->input->post('deskripsi'),
-					'gambar' => $upload_data['uploads']['file_name'],
+					'images' => $upload_data['uploads']['file_name'],
 				);
 				$this->m_produk->add($data);
+
+				//menambahkan otomatis diskon 0
+				$id = $this->m_produk->id_produk();
+				$i = $id->id;
+				$diskon = array(
+					'id_produk' => $i,
+					'nama_diskon' => '0',
+					'diskon' => '0',
+				);
+				$this->m_diskon->add($diskon);
 				$this->session->set_flashdata('pesan', 'Produk Berhasil Ditambah');
 				redirect('produk');
 			}
@@ -102,8 +113,8 @@ class Produk extends CI_Controller
 			} else {
 				//hapus gambar dari folder
 				$produk = $this->m_produk->detail($id_produk);
-				if ($produk->gambar !== "") {
-					unlink('./assets/gambar/' . $produk->gambar);
+				if ($produk->images !== "") {
+					unlink('./assets/gambar/' . $produk->images);
 				}
 				$upload_data = array('uploads' => $this->upload->data());
 				$config['image_library'] = 'gd2';
@@ -117,7 +128,7 @@ class Produk extends CI_Controller
 					'berat' => $this->input->post('berat'),
 					'stock' => $this->input->post('stock'),
 					'deskripsi' => $this->input->post('deskripsi'),
-					'gambar' => $upload_data['uploads']['file_name'],
+					'images' => $upload_data['uploads']['file_name'],
 				);
 				$this->m_produk->update($data);
 				$this->session->set_flashdata('pesan', 'Produk Berhasil Ditambah');
@@ -146,18 +157,15 @@ class Produk extends CI_Controller
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);
 	}
 
-	public function delete($id_produk = NULL)
+	public function delete($id = NULL)
 	{
 		//hapus gambar
-		$produk = $this->m_produk->detail($id_produk);
-		if ($produk->gambar !== "") {
-			unlink('./assets/gambar/' . $produk->gambar);
+		$produk = $this->m_produk->detail_delete($id);
+		if ($produk->images !== "") {
+			unlink('./assets/gambar/' . $produk->images);
 		}
-
-		$data = array(
-			'id_produk' => $id_produk
-		);
-		$this->m_produk->delete($data);
+		$this->m_produk->delete($id);
+		$this->m_diskon->delete($id);
 		$this->session->set_flashdata('pesan', 'Data Berhasil Dihapus');
 		redirect('produk');
 	}
