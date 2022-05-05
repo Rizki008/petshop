@@ -19,9 +19,14 @@ class M_diskon extends CI_Model
 		$this->db->insert('diskon', $data);
 	}
 
-	public function delete($data)
+	public function update($data)
 	{
 		$this->db->where('id_diskon', $data['id_diskon']);
+		$this->db->update('diskon', $data);
+	}
+	public function delete($id)
+	{
+		$this->db->where('id_diskon', $id);
 		$this->db->delete('diskon');
 	}
 }
