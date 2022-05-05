@@ -52,10 +52,10 @@
 							?>
 								<tr class="text-center">
 									<td class="product-remove">
-										<a href="<?= base_url('belanja/delete/') . $items['rowid'] ?>" class="remove-item"><span class="ion-ios-close"></span></a>
+										<a href="<?= base_url('belanja/delete/') . $items['rowid'] ?>" class="remove-item"><span class="fa fa-close"></span></a>
 									</td>
 									<td class="image-prod">
-										<img src="<?= base_url('assets/gambar/' . $produk->gambar) ?>" class="img-fluid" alt="Colorlib Template">
+										<img src="<?= base_url('assets/gambar/' . $produk->images) ?>" class="img-fluid" alt="Colorlib Template" width="150px">
 									</td>
 									<td class="product-name">
 										<h6><?php echo $items['name']; ?></h6>
