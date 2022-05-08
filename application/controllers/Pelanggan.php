@@ -9,6 +9,7 @@ class Pelanggan extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_pelanggan');
+		$this->load->model('m_home');
 	}
 
 	public function register()

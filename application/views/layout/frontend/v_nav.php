@@ -29,7 +29,8 @@
 				</div>
 			</div>
 			<!-- /SEARCH BAR -->
-
+			<?php
+			$jml_pesanan = $this->m_home->jumlah_pesanan(); ?>
 			<!-- ACCOUNT -->
 			<div class="col-md-3 clearfix">
 				<div class="header-ctn">
@@ -38,7 +39,7 @@
 						<a href="<?= base_url('pesanan_saya') ?>">
 							<i class="fa fa-shopping-bag"></i>
 							<span>Pesanan Saya</span>
-							<div class="qty">2</div>
+							<div class="qty"><?= $jml_pesanan ?></div>
 						</a>
 					</div>
 					<!-- /Wishlist -->

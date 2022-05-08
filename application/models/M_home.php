@@ -107,4 +107,9 @@ class M_home extends CI_Model
 		$this->db->limit(4);
 		return $this->db->get()->result();
 	}
+
+	public function jumlah_pesanan()
+	{
+		return $this->db->query('SELECT SUM(transaksi.id_pelanggan) FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan GROUP BY transaksi.id_pelanggan')->num_rows();
+	}
 }
