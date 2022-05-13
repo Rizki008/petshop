@@ -64,7 +64,7 @@
 					</li>
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-dock-top"></i>
+							<i class="menu-icon tf-icons bx bxs-category"></i>
 							<div data-i18n="Account Settings">Kategori</div>
 						</a>
 						<ul class="menu-sub">
@@ -77,7 +77,7 @@
 					</li>
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+							<i class="menu-icon tf-icons bx bxs-t-shirt"></i>
 							<div data-i18n="Authentications">Produk</div>
 						</a>
 						<ul class="menu-sub">
@@ -90,7 +90,7 @@
 					</li>
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+							<i class="menu-icon tf-icons bx bx-images"></i>
 							<div data-i18n="Authentications">Gambar</div>
 						</a>
 						<ul class="menu-sub">
@@ -103,7 +103,7 @@
 					</li>
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-cube-alt"></i>
+							<i class="menu-icon tf-icons bx bxs-discount"></i>
 							<div data-i18n="Misc">Diskon</div>
 						</a>
 						<ul class="menu-sub">
@@ -119,19 +119,19 @@
 					<!-- Cards -->
 					<li class="menu-item">
 						<a href="<?= base_url('pesanan_masuk') ?>" class="menu-link">
-							<i class="menu-icon tf-icons bx bx-collection"></i>
+							<i class="menu-icon tf-icons bx bxs-package"></i>
 							<div data-i18n="Basic">Pesanan</div>
 						</a>
 					</li>
 					<!-- User interface -->
 					<li class="menu-item">
 						<a href="javascript:void(0)" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-box"></i>
-							<div data-i18n="User interface">Pelanggan</div>
+							<i class="menu-icon tf-icons bx bx-history"></i>
+							<div data-i18n="User interface">Histori Pelanggan</div>
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
-								<a href="ui-accordion.html" class="menu-link">
+								<a href="<?= base_url('pesanan_masuk/histori') ?>" class="menu-link">
 									<div data-i18n="Accordion">Histori Pelanggan</div>
 								</a>
 							</li>
@@ -139,7 +139,7 @@
 					</li>
 					<li class="menu-item">
 						<a href="<?= base_url('admin/lokasi') ?>" class="menu-link">
-							<i class="menu-icon tf-icons bx bx-collection"></i>
+							<i class="menu-icon tf-icons bx  bxs-map"></i>
 							<div data-i18n="Basic">Lokasi</div>
 						</a>
 					</li>
@@ -154,7 +154,7 @@
 						</a>
 						<ul class="menu-sub">
 							<li class="menu-item">
-								<a href="forms-basic-inputs.html" class="menu-link">
+								<a href="<?= base_url('laporan') ?>" class="menu-link">
 									<div data-i18n="Basic Inputs">Data Laporan</div>
 								</a>
 							</li>
@@ -162,7 +162,7 @@
 					</li>
 					<li class="menu-item">
 						<a href="javascript:void(0);" class="menu-link menu-toggle">
-							<i class="menu-icon tf-icons bx bx-detail"></i>
+							<i class="menu-icon tf-icons bx bx-user-pin"></i>
 							<div data-i18n="Form Layouts">User</div>
 						</a>
 						<ul class="menu-sub">
