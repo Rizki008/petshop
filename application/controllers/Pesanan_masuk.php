@@ -28,20 +28,15 @@ class Pesanan_masuk extends CI_Controller
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);
 	}
 
-	// Add a new item
-	// public function add()
-	// {
-	// }
-
-	// //Update one item
-	// public function update($id = NULL)
-	// {
-	// }
-
-	// //Delete one item
-	// public function delete($id = NULL)
-	// {
-	// }
+	public function histori()
+	{
+		$data = array(
+			'title' => 'Data Histori Pembelian',
+			'histori' => $this->m_pesanan_masuk->histori(),
+			'isi' => 'layout/backend/histori/v_histori'
+		);
+		$this->load->view('layout/backend/v_wrapper', $data, FALSE);
+	}
 }
 
 /* End of file Pesanan_masuk.php */
