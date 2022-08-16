@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-	<title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+	<title>Petshop <?= $title ?></title>
 
 	<meta name="description" content="" />
 
@@ -51,7 +51,7 @@
 					<div class="card-body">
 						<!-- Logo -->
 						<div class="app-brand justify-content-center">
-							<a href="index.html" class="app-brand-link gap-2">
+							<a href="#" class="app-brand-link gap-2">
 								<span class="app-brand-logo demo">
 									<svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 										<defs>
@@ -90,8 +90,8 @@
 							</a>
 						</div>
 						<!-- /Logo -->
-						<h4 class="mb-2">Welcome to Petshop! 👋</h4>
-						<p class="mb-4">Please sign-in to your account and start the adventure</p>
+						<h4 class="mb-2">Selamat datang di Petshop! 👋</h4>
+						<p class="mb-4">Mohon Untuk Login Terlebih dahulu untuk mulai!!!</p>
 						<?php
 
 						echo validation_errors(
@@ -138,13 +138,6 @@
 								<button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
 							</div>
 						</form>
-
-						<p class="text-center">
-							<span>New on our platform?</span>
-							<a href="auth-register-basic.html">
-								<span>Create an account</span>
-							</a>
-						</p>
 					</div>
 				</div>
 				<!-- /Register -->

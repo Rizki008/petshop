@@ -99,9 +99,10 @@ class M_home extends CI_Model
 	public function best_deal_product_transaksi()
 	{
 		$this->db->select_sum('qty');
-		$this->db->select('produk.images, produk.nama_produk, produk.harga, produk.id_produk');
+		$this->db->select('produk.images, produk.nama_produk, produk.harga, produk.id_produk, kategori.gambar');
 		$this->db->from('rinci_transaksi');
 		$this->db->join('produk', 'rinci_transaksi.id_produk = produk.id_produk', 'left');
+		$this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
 		$this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
 		$this->db->group_by('rinci_transaksi.id_produk');
 		$this->db->limit(4);

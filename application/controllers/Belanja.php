@@ -9,6 +9,8 @@ class Belanja extends CI_Controller
 		parent::__construct();
 		$this->load->model('m_transaksi');
 		// $this->load->model('m_chatting');
+		$this->load->model('m_kategori');
+
 		$this->load->model('m_home');
 	}
 
@@ -87,6 +89,8 @@ class Belanja extends CI_Controller
 			$data = array(
 				'title' => 'Langsung Beli',
 				// 'lokasi' => $this->m_lokasi->lokasi(),
+
+				'kategori' => $this->m_kategori->kategori(),
 				'isi' => 'v_cekouth'
 			);
 			$this->load->view('v_cekouth', $data, FALSE);
