@@ -11,6 +11,7 @@ class Diskon extends CI_Controller
 		parent::__construct();
 		$this->load->model('m_diskon');
 		$this->load->model('m_produk');
+		$this->load->model('m_transaksi');
 	}
 
 	// List all your items
@@ -19,6 +20,8 @@ class Diskon extends CI_Controller
 		$data = array(
 			'title' => 'Data Produk Diskon',
 			'diskon' => $this->m_diskon->diskon(),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/backend/diskon/v_diskon'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);

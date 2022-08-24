@@ -17,6 +17,12 @@ class Pemilik extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Dashboard',
+			'total_produk' => $this->m_admin->total_produk(),
+			'total_pesanan' => $this->m_admin->total_pesanan(),
+			'total_pelanggan' => $this->m_admin->total_pelanggan(),
+			'total_transaksi' => $this->m_admin->total_transaksi(),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'user' => $this->m_admin->user(),
 			'isi' => 'v_pemilik'
 		);
@@ -27,6 +33,8 @@ class Pemilik extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Laporan',
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/pemilik/laporan/v_laporan'
 		);
 		$this->load->view('layout/pemilik/v_wrapper', $data, FALSE);

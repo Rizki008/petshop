@@ -9,6 +9,7 @@ class Laporan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_laporan');
+        $this->load->model('m_transaksi');
         // $this->load->model('m_admin');
         // $this->load->model('m_dashboard');
         // $this->load->model('m_chatting');
@@ -18,6 +19,8 @@ class Laporan extends CI_Controller
     {
         $data = array(
             'title' => 'Laporan',
+            'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+            'grafik' => $this->m_transaksi->grafik(),
             'isi' => 'layout/backend/laporan/v_laporan'
         );
         $this->load->view('layout/backend/v_wrapper', $data, FALSE);

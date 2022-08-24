@@ -11,6 +11,7 @@ class Pesanan_masuk extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_pesanan_masuk');
+		$this->load->model('m_transaksi');
 	}
 
 	// List all your items
@@ -23,6 +24,8 @@ class Pesanan_masuk extends CI_Controller
 			'pesanan_dikirim' => $this->m_pesanan_masuk->pesanan_dikirim(),
 			'pesanan_selesai' => $this->m_pesanan_masuk->pesanan_selesai(),
 			'proses_kirim' => $this->m_pesanan_masuk->proses_kirim(),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/backend/transaksi/v_pesanan'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);
@@ -32,6 +35,8 @@ class Pesanan_masuk extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Data Histori Pembelian',
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'histori' => $this->m_pesanan_masuk->histori(),
 			'isi' => 'layout/backend/histori/v_histori'
 		);

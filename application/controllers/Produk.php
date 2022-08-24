@@ -10,6 +10,7 @@ class Produk extends CI_Controller
 		$this->load->model('m_produk');
 		$this->load->model('m_diskon');
 		$this->load->model('m_kategori');
+		$this->load->model('m_transaksi');
 	}
 
 	public function index()
@@ -17,6 +18,8 @@ class Produk extends CI_Controller
 		$data = array(
 			'title' => 'Data Produk',
 			'produk' => $this->m_produk->produk(),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/backend/produk/v_produk'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);

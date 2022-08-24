@@ -9,6 +9,7 @@ class Kategori extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('m_kategori');
+		$this->load->model('m_transaksi');
 	}
 
 	// List all your items
@@ -17,6 +18,8 @@ class Kategori extends CI_Controller
 		$data = array(
 			'title' => 'Kategori Produk',
 			'ketegori' => $this->m_kategori->kategori(),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/backend/kategori/v_kategori'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);

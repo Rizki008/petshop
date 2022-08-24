@@ -16,6 +16,12 @@ class Admin extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Dashboard',
+			'total_produk' => $this->m_admin->total_produk(),
+			'total_pesanan' => $this->m_admin->total_pesanan(),
+			'total_pelanggan' => $this->m_admin->total_pelanggan(),
+			'total_transaksi' => $this->m_admin->total_transaksi(),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'user' => $this->m_admin->user(),
 			'isi' => 'v_admin'
 		);
@@ -76,6 +82,8 @@ class Admin extends CI_Controller
 			$data = array(
 				'title' => 'Setting',
 				'lokasi' => $this->m_admin->data_lokasi(),
+				'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+				'grafik' => $this->m_transaksi->grafik(),
 				'isi' => 'layout/backend/lokasi/v_lokasi'
 			);
 			$this->load->view('layout/backend/v_wrapper', $data, FALSE);

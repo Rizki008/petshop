@@ -10,6 +10,7 @@ class Gambar extends CI_Controller
 		parent::__construct();
 		$this->load->model('m_gambar');
 		$this->load->model('m_produk');
+		$this->load->model('m_transaksi');
 	}
 
 	// List all your items
@@ -18,6 +19,8 @@ class Gambar extends CI_Controller
 		$data = array(
 			'title' => 'Gambar Produk',
 			'gambar' => $this->m_gambar->gambar(),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/backend/gambar/v_gambar'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);

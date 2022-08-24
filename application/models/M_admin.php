@@ -43,4 +43,26 @@ class M_admin extends CI_Model
 		$this->db->where('id', $data['id']);
 		$this->db->update('lokasi', $data);
 	}
+
+	public function total_produk()
+	{
+		return $this->db->get('produk')->num_rows();
+	}
+
+	public function total_pesanan()
+	{
+		$this->db->where('status_order=0');
+		return $this->db->get('transaksi')->num_rows();
+	}
+
+	public function total_pelanggan()
+	{
+		return $this->db->get('pelanggan')->num_rows();
+	}
+
+	public function total_transaksi()
+	{
+		$this->db->where('status_order=3');
+		return $this->db->get('transaksi')->num_rows();
+	}
 }

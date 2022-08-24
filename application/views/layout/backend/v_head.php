@@ -39,4 +39,6 @@
 	<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 	<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 	<script src="<?= base_url() ?>backend/assets/js/config.js"></script>
+	<script src="<?= base_url() ?>backend/chart/dist/Chart.min.js"></script>
+	<script src="<?= base_url() ?>backend/chart/samples/utils.js"></script>
 </head>
