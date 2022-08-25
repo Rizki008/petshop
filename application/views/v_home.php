@@ -13,7 +13,7 @@
 						</div>
 						<div class="shop-body">
 							<h3><?= $value->nama_kategori ?></h3>
-							<a href="<?= base_url('/home/kategori/' . $value->id_kategori) ?>" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="<?= base_url('home/kategori/' . $value->id_kategori) ?>" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 				</div>

@@ -39,7 +39,7 @@
 						<?php foreach ($best_deal_product_transaksi as $key => $value) { ?>
 							<div class="product-widget">
 								<div class="product-img">
-									<img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" alt="">
+									<img src="<?= base_url('assets/gambar/' . $value->images) ?>" alt="">
 								</div>
 								<div class="product-body">
 									<h3 class="product-name"><a href="<?= base_url('home/detail_produk/' . $value->id_produk) ?>"><?= $value->nama_produk ?></a></h3>
@@ -77,7 +77,7 @@
 									echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
 									?>
 									<div class="product-img">
-										<img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" alt="<?= $value->nama_produk ?>">
+										<img src="<?= base_url('assets/gambar/' . $value->images) ?>" alt="<?= $value->nama_produk ?>">
 										<div class="product-label">
 											<?php if ($value->diskon > 0) : ?>
 												<span class="sale"><?= count_percent_discount($value->diskon, $value->harga, 0) ?>%</span>
