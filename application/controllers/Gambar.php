@@ -39,6 +39,8 @@ class Gambar extends CI_Controller
 			if (!$this->upload->do_upload($field_name)) {
 				$data = array(
 					'title' => 'Tambah Gambar Produk',
+					'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+					'grafik' => $this->m_transaksi->grafik(),
 					'error_upload' => $this->upload->display_errors(),
 					'produk' => $this->m_produk->detail($id_produk),
 					'gambar' => $this->m_gambar->detail_gambar($id_produk),
@@ -62,6 +64,8 @@ class Gambar extends CI_Controller
 		}
 		$data = array(
 			'title' => 'Tambah Gambar Produk',
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'produk' => $this->m_produk->detail($id_produk),
 			'gambar' => $this->m_gambar->detail_gambar($id_produk),
 			'isi' => 'layout/backend/gambar/v_add'

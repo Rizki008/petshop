@@ -45,6 +45,8 @@ class Produk extends CI_Controller
 			if (!$this->upload->do_upload($field_name)) {
 				$data = array(
 					'title' => 'Tambah Produk',
+					'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+					'grafik' => $this->m_transaksi->grafik(),
 					'kategori' => $this->m_kategori->kategori(),
 					'error_upload' => $this->upload->display_errors(),
 					'isi' => 'layout/backend/produk/v_add'
@@ -81,6 +83,8 @@ class Produk extends CI_Controller
 		}
 		$data = array(
 			'title' => 'Tambah Produk',
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'kategori' => $this->m_kategori->kategori(),
 			'isi' => 'layout/backend/produk/v_add'
 		);
@@ -107,6 +111,8 @@ class Produk extends CI_Controller
 			if (!$this->upload->do_upload($field_name)) {
 				$data = array(
 					'title' => 'Edit Produk',
+					'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+					'grafik' => $this->m_transaksi->grafik(),
 					'kategori' => $this->m_kategori->kategori(),
 					'produk' => $this->m_produk->detail($id_produk),
 					'error_upload' => $this->upload->display_errors(),
@@ -153,6 +159,8 @@ class Produk extends CI_Controller
 		}
 		$data = array(
 			'title' => 'Tambah Produk',
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'kategori' => $this->m_kategori->kategori(),
 			'produk' => $this->m_produk->detail($id_produk),
 			'isi' => 'layout/backend/produk/v_edit'

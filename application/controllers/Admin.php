@@ -32,6 +32,8 @@ class Admin extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Data Pengelola',
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'user' => $this->m_admin->user(),
 			'isi' => 'layout/backend/user/v_user'
 		);

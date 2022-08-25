@@ -52,6 +52,8 @@ class Pemilik extends CI_Controller
 			'bulan' => $bulan,
 			'tahun' => $tahun,
 			'laporan' => $this->m_laporan->lap_harian($tanggal, $bulan, $tahun),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/pemilik/laporan/v_lap_hari'
 		);
 		$this->load->view('layout/pemilik/v_wrapper', $data, FALSE);
@@ -67,6 +69,8 @@ class Pemilik extends CI_Controller
 			'bulan' => $bulan,
 			'tahun' => $tahun,
 			'laporan' => $this->m_laporan->lap_bulanan($bulan, $tahun),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/pemilik/laporan/v_lap_bulan'
 		);
 		$this->load->view('layout/pemilik/v_wrapper', $data, FALSE);
@@ -80,6 +84,8 @@ class Pemilik extends CI_Controller
 			'title' => 'Laporan Penjualan Tahunan',
 			'tahun' => $tahun,
 			'laporan' => $this->m_laporan->lap_tahunan($tahun),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/pemilik/laporan/v_lap_tahun'
 		);
 		$this->load->view('layout/pemilik/v_wrapper', $data, FALSE);
@@ -97,6 +103,8 @@ class Pemilik extends CI_Controller
 			'bulan' => $bulan,
 			'tahun' => $tahun,
 			'laporan' => $this->m_laporan->lap_harian($tanggal, $bulan, $tahun),
+			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+			'grafik' => $this->m_transaksi->grafik(),
 			'isi' => 'layout/pemilik/laporan/v_lap_stock'
 		);
 		$this->load->view('layout/pemilik/v_wrapper', $data, FALSE);
