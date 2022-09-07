@@ -72,7 +72,8 @@ class M_pesanan_masuk extends CI_Model
 		$this->db->from('rinci_transaksi');
 		$this->db->join('transaksi', 'rinci_transaksi.no_order = transaksi.no_order', 'left');
 		$this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
-		$this->db->order_by('rinci_transaksi.qty');
+		$this->db->group_by('pelanggan.id_pelanggan');
+		$this->db->order_by('qty', 'desc');
 		return $this->db->get()->result();
 	}
 }
