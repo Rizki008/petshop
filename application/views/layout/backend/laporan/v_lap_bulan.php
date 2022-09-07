@@ -45,6 +45,7 @@
             <div class="row no-print">
                 <div class="col-12">
                     <button class="btn btn-default" onclick="window.print()"><i class='bx bxs-printer'></i> Print</button>
+                    <a href="<?php echo base_url("laporan/export"); ?>"><i class="bx bxs-download"></i> Export ke Excel</a>
                 </div>
             </div>
         </div>
