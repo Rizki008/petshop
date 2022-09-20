@@ -18,6 +18,8 @@ class Pelanggan extends CI_Controller
 		$this->form_validation->set_rules('email', 'Email', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 		$this->form_validation->set_rules('password', 'Password', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 		$this->form_validation->set_rules('no_tlpn', 'No telpon', 'required', array('required' => '%s Mohon untuk diisi!!!'));
+		$this->form_validation->set_rules('alamat', 'Alamat', 'required', array('required' => '%s Mohon untuk diisi!!!'));
+		$this->form_validation->set_rules('kode_post', 'Kode Post', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 
 		if ($this->form_validation->run() ==  FALSE) {
 			$data = array(
@@ -31,6 +33,8 @@ class Pelanggan extends CI_Controller
 				'email' => $this->input->post('email'),
 				'password' => $this->input->post('password'),
 				'no_tlpn' => $this->input->post('no_tlpn'),
+				'alamat' => $this->input->post('alamat'),
+				'kode_post' => $this->input->post('kode_post'),
 			);
 			$this->m_pelanggan->register($data);
 			$this->session->set_flashdata('pesan', 'Register Berhasi, Silahkan Untuk Login');
