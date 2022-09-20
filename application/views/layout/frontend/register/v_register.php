@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Login 09</title>
+	<title><?= $title ?></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -57,6 +57,14 @@
 							<div class="form-group">
 								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></div>
 								<input type="number" name="no_tlpn" value="<?= set_value('no_tlpn') ?>" class="form-control" placeholder="No Telpon" required>
+							</div>
+							<div class="form-group">
+								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></div>
+								<input type="number" name="kode_post" value="<?= set_value('kode_post') ?>" class="form-control" placeholder="Kode Post" required>
+							</div>
+							<div class="form-group">
+								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></div>
+								<input type="text" name="alamat" value="<?= set_value('alamat') ?>" class="form-control" placeholder="Alamat Lengkap" required>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn form-control btn-primary rounded submit px-3">Registrasi</button>
