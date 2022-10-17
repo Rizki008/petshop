@@ -20,7 +20,7 @@
 
 				<div class="col-md-3 col-xs-6">
 					<div class="footer">
-						<h3 class="footer-title">Categories</h3>
+						<h3 class="footer-title">Kategori</h3>
 						<?php foreach ($kategori as $key => $value) { ?>
 							<ul class="footer-links">
 								<li><a href="#"><?= $value->nama_kategori ?></a></li>

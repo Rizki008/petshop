@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
-                    <li><a href="<?= base_url() ?>">Home</a></li>
-                    <li><a href="#">Riviews</a></li>
+                    <li><a href="<?= base_url() ?>">Beranda</a></li>
+                    <li><a href="#">Ulasan</a></li>
                 </ul>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 <div id="product-tab">
                     <!-- product tab nav -->
                     <ul class="tab-nav">
-                        <li class="active"><a data-toggle="tab" href="#tab3">Reviews </a></li>
+                        <li class="active"><a data-toggle="tab" href="#tab3">Ulasan </a></li>
                     </ul>
                     <!-- /product tab nav -->
 
@@ -57,7 +57,7 @@
                                                         <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
                                                     </div> -->
                                                 </div>
-                                                <button type="submit" class="primary-btn">Submit</button>
+                                                <button type="submit" class="primary-btn">Simpan</button>
                                             </form>
                                         </div>
                                     </div>

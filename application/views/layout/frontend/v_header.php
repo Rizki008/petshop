@@ -10,9 +10,9 @@
 					<li><a href="#"><i class="fa fa-map-marker"></i> Jl. Silwangi Kuningan. No.13</a></li>
 				</ul>
 				<ul class="header-links pull-right">
-					<li><a href="<?= base_url('pelanggan/logout') ?>"><i class="fa fa-sign-out"></i> Logout</a></li>
+					<li><a href="<?= base_url('pelanggan/logout') ?>"><i class="fa fa-sign-out"></i> Keluar</a></li>
 					<li><?php if ($this->session->userdata('email') == "") { ?>
-							<a href="<?= base_url('pelanggan/login') ?>"><i class="fa fa-user-o"></i> Login</a>
+							<a href="<?= base_url('pelanggan/login') ?>"><i class="fa fa-user-o"></i> Masuk</a>
 						<?php } else { ?>
 							<a href="<?= base_url('pelanggan/profil') ?>"><i class="fa fa-user-o"></i> <?= $this->session->userdata('nama'); ?></a>
 						<?php } ?>

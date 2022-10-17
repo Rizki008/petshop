@@ -5,13 +5,13 @@
 		<!-- row -->
 		<div class="row">
 			<div class="col-md-12">
-				<ul class="breadcrumb-tree">
+				<!-- <ul class="breadcrumb-tree">
 					<li><a href="#">Home</a></li>
 					<li><a href="#">All Categories</a></li>
 					<li><a href="#">Accessories</a></li>
 					<li><a href="#">Headphones</a></li>
 					<li class="active">Product name goes here</li>
-				</ul>
+				</ul> -->
 			</div>
 		</div>
 		<!-- /row -->
@@ -97,8 +97,8 @@
 				<div id="product-tab">
 					<!-- product tab nav -->
 					<ul class="tab-nav">
-						<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
-						<li><a data-toggle="tab" href="#tab3">Reviews</a></li>
+						<li class="active"><a data-toggle="tab" href="#tab1">Deskripsi</a></li>
+						<li><a data-toggle="tab" href="#tab3">Ulasan</a></li>
 					</ul>
 					<!-- /product tab nav -->
 
@@ -167,7 +167,7 @@
 
 			<div class="col-md-12">
 				<div class="section-title text-center">
-					<h3 class="title">Related Products</h3>
+					<h3 class="title">Produk Lainnya</h3>
 				</div>
 			</div>
 			<?php if (count($related_products) > 0) : ?>

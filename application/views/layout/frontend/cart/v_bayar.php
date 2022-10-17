@@ -21,7 +21,7 @@
 				<!-- Billing Details -->
 				<div class="billing-details">
 					<div class="section-title">
-						<h3 class="title">Billing address</h3>
+						<h3 class="title">Pembayaran</h3>
 					</div>
 					<div class="form-group">
 						<input class="input" type="text" name="atas_nama" placeholder="Nama Pembayar" required>
@@ -59,10 +59,10 @@
 							</div>
 						<?php } ?>
 					</div>
-					<div class="order-col">
+					<!-- <div class="order-col">
 						<div>Shiping</div>
 						<div><strong>FREE</strong></div>
-					</div>
+					</div> -->
 					<div class="order-col">
 						<div><strong>TOTAL</strong></div>
 						<div><strong class="order-total">Rp. <?= number_format($pesanan->total_bayar, 0) ?>.-</strong></div>

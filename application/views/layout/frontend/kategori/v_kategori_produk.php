@@ -34,7 +34,7 @@
 				<!-- /aside Widget -->
 				<!-- aside Widget -->
 				<div class="aside">
-					<h3 class="aside-title">Top selling</h3>
+					<h3 class="aside-title">Produk Paling Bagus</h3>
 					<?php if (count($best_deal_product_transaksi) > 0) : ?>
 						<?php foreach ($best_deal_product_transaksi as $key => $value) { ?>
 							<div class="product-widget">
@@ -130,7 +130,7 @@
 	<!-- container -->
 	<div class="container">
 		<!-- row -->
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-md-12">
 				<div class="newsletter">
 					<p>Sign Up for the <strong>NEWSLETTER</strong></p>
@@ -154,7 +154,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- /row -->
 	</div>
 	<!-- /container -->

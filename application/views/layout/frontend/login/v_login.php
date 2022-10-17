@@ -19,7 +19,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Login Pelanggan Pethsop</h2>
+					<h2 class="heading-section">Masuk Pelanggan Pethsop</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -27,7 +27,7 @@
 					<div class="login-wrap py-5">
 						<div class="img d-flex align-items-center justify-content-center" style="background-image: url(images/bg.jpg);"></div>
 						<h3 class="text-center mb-0">Selamat Datang</h3>
-						<p class="text-center">Silahkan Untuk Login Akun Anda</p>
+						<p class="text-center">Silahkan Untuk Masuk Akun Anda</p>
 						<?php
 						echo validation_errors('<div class="alert alert-warning alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -51,12 +51,12 @@
 								<input type="password" name="password" value="<?= set_value('password') ?>" class="form-control" placeholder="Password" required>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn form-control btn-primary rounded submit px-3">Login</button>
+								<button type="submit" class="btn form-control btn-primary rounded submit px-3">Masuk</button>
 							</div>
 						</form>
 						<div class="w-100 text-center mt-4 text">
 							<p class="mb-0">Belum Punya akun?</p>
-							<a href="<?= base_url('pelanggan/register') ?>">Registrasi</a>
+							<a href="<?= base_url('pelanggan/register') ?>">Pendaftaran</a>
 						</div>
 					</div>
 				</div>

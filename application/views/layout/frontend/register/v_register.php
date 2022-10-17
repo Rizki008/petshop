@@ -75,12 +75,12 @@
 								<input type="text" name="alamat" value="<?= set_value('alamat') ?>" class="form-control" placeholder="Alamat Lengkap" required>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn form-control btn-primary rounded submit px-3">Registrasi</button>
+								<button type="submit" class="btn form-control btn-primary rounded submit px-3">Pendaftaran</button>
 							</div>
 						</form>
 						<div class="w-100 text-center mt-4 text">
 							<p class="mb-0">Sudah Punya Akun?</p>
-							<a href="<?= base_url('pelanggan/login') ?>">Login Pelanggan</a>
+							<a href="<?= base_url('pelanggan/login') ?>">Masuk</a>
 						</div>
 					</div>
 				</div>

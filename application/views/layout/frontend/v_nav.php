@@ -68,11 +68,11 @@
 							</div>
 							<div class="cart-summary">
 								<small><?= $jml_item ?> Item(s) selected</small>
-								<h5>SUBTOTAL: Rp <?= $this->cart->format_number($this->cart->total()); ?></h5>
+								<h5>Total Belanja: Rp <?= $this->cart->format_number($this->cart->total()); ?></h5>
 							</div>
 							<div class="cart-btns">
-								<a href="<?= base_url('belanja') ?>">View Cart</a>
-								<a href="<?= base_url('belanja/cekout') ?>">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="<?= base_url('belanja') ?>">Lihat Keranjang</a>
+								<a href="<?= base_url('belanja/cekout') ?>">Beli <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 					</div>
