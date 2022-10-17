@@ -240,16 +240,16 @@
 							<h3 class="title">Billing address</h3>
 						</div>
 						<div class="form-group">
-							<input class="input" type="text" name="nama_pelanggan" value="<?= $this->session->userdata('nama'); ?>">
+							<input class="input" type="text" name="nama_pelanggan" value="<?= $this->session->userdata('nama'); ?>" readonly>
 						</div>
 						<div class="form-group">
-							<input class="input" type="number" name="no_tlpn" value="<?= $this->session->userdata('no_tlpn'); ?>">
+							<input class="input" type="number" name="no_tlpn" value="<?= $this->session->userdata('no_tlpn'); ?>" readonly>
 						</div>
 						<div class="form-group">
-							<input class="input" type="text" name="kode_pos" value="<?= $this->session->userdata('kode_post'); ?>">
+							<input class="input" type="text" name="kode_pos" value="<?= $this->session->userdata('kode_post'); ?>" readonly>
 						</div>
 						<div class="form-group">
-							<input class="input" type="text" name="alamat" value="<?= $this->session->userdata('alamat'); ?>">
+							<input class="input" type="text" name="alamat" value="<?= $this->session->userdata('alamat'); ?>" readonly>
 						</div>
 					</div>
 					<!-- /Billing Details -->
