@@ -22,6 +22,7 @@ class Admin extends CI_Controller
 			'total_transaksi' => $this->m_admin->total_transaksi(),
 			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 			'grafik' => $this->m_transaksi->grafik(),
+			'grafik_kelamin' => $this->m_transaksi->grafik_kelamin(),
 			'user' => $this->m_admin->user(),
 			'isi' => 'v_admin'
 		);

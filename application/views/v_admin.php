@@ -128,6 +128,16 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
+				<div class="card">
+					<div class="row row-bordered g-0">
+						<div class="col-md-8">
+							<h5 class="card-header m-0 me-2 pb-3">Jenis Kelamin</h5>
+							<canvas id="myHanasayang" height="100" style="height: 100px;"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- / Content -->

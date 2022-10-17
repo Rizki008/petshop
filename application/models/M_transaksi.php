@@ -121,6 +121,21 @@ class M_transaksi extends CI_Model
 		$this->db->order_by('qty', 'desc');
 		return $this->db->get()->result();
 	}
+	public function grafik_kelamin()
+	{
+
+		return $this->db->query("SELECT SUM(qty) as hanasayang, pelanggan.jenis_kel FROM rinci_transaksi JOIN transaksi ON rinci_transaksi.no_order=transaksi.no_order JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan GROUP BY pelanggan.jenis_kel")->result();
+		// $this->db->select_sum('qty');
+		// $this->db->select('pelanggan.nama');
+		// // $this->db->select('rinci_transaksi.qty');
+		// $this->db->from('rinci_transaksi');
+		// $this->db->join('transaksi', 'rinci_transaksi.no_order = transaksi.no_order', 'left');
+		// // $this->db->join('produk', 'rinci_transaksi.id_produk = produk.id_produk', 'left');
+		// $this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
+		// $this->db->group_by('pelanggan.id_pelanggan');
+		// $this->db->order_by('qty', 'desc');
+		// return $this->db->get()->result();
+	}
 
 	public function info($id)
 	{
