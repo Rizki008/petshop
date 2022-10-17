@@ -47,6 +47,14 @@
 								<input type="text" class="form-control" name="nama" value="<?= set_value('nama') ?>" placeholder="Nama" required>
 							</div>
 							<div class="form-group">
+								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-user"></span></div>
+								<select name="jenis_kel" id="jenis_kel" class="form-control">
+									<option>---Jenis Kelamin---</option>
+									<option value="laki-laki">Laki-Laki</option>
+									<option value="perempuan">Perempuan</option>
+								</select>
+							</div>
+							<div class="form-group">
 								<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-envelope"></span></div>
 								<input type="email" class="form-control" name="email" value="<?= set_value('email') ?>" placeholder="Email" required>
 							</div>

@@ -21,6 +21,7 @@ class Gambar extends CI_Controller
 			'gambar' => $this->m_gambar->gambar(),
 			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 			'grafik' => $this->m_transaksi->grafik(),
+			'grafik_kelamin' => $this->m_transaksi->grafik_kelamin(),
 			'isi' => 'layout/backend/gambar/v_gambar'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);

@@ -20,6 +20,7 @@ class Kategori extends CI_Controller
 			'ketegori' => $this->m_kategori->kategori(),
 			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 			'grafik' => $this->m_transaksi->grafik(),
+			'grafik_kelamin' => $this->m_transaksi->grafik_kelamin(),
 			'isi' => 'layout/backend/kategori/v_kategori'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);

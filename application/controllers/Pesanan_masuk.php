@@ -26,6 +26,7 @@ class Pesanan_masuk extends CI_Controller
 			'proses_kirim' => $this->m_pesanan_masuk->proses_kirim(),
 			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 			'grafik' => $this->m_transaksi->grafik(),
+			'grafik_kelamin' => $this->m_transaksi->grafik_kelamin(),
 			'isi' => 'layout/backend/transaksi/v_pesanan'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);
@@ -38,6 +39,7 @@ class Pesanan_masuk extends CI_Controller
 			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 			'grafik' => $this->m_transaksi->grafik(),
 			'histori' => $this->m_pesanan_masuk->histori(),
+			'grafik_kelamin' => $this->m_transaksi->grafik_kelamin(),
 			'isi' => 'layout/backend/histori/v_histori'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);

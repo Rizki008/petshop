@@ -35,6 +35,7 @@ class Admin extends CI_Controller
 			'title' => 'Data Pengelola',
 			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 			'grafik' => $this->m_transaksi->grafik(),
+			'grafik_kelamin' => $this->m_transaksi->grafik_kelamin(),
 			'user' => $this->m_admin->user(),
 			'isi' => 'layout/backend/user/v_user'
 		);
@@ -87,6 +88,7 @@ class Admin extends CI_Controller
 				'lokasi' => $this->m_admin->data_lokasi(),
 				'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 				'grafik' => $this->m_transaksi->grafik(),
+				'grafik_kelamin' => $this->m_transaksi->grafik_kelamin(),
 				'isi' => 'layout/backend/lokasi/v_lokasi'
 			);
 			$this->load->view('layout/backend/v_wrapper', $data, FALSE);

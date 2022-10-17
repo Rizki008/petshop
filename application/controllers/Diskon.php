@@ -22,6 +22,7 @@ class Diskon extends CI_Controller
 			'diskon' => $this->m_diskon->diskon(),
 			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 			'grafik' => $this->m_transaksi->grafik(),
+			'grafik_kelamin' => $this->m_transaksi->grafik_kelamin(),
 			'isi' => 'layout/backend/diskon/v_diskon'
 		);
 		$this->load->view('layout/backend/v_wrapper', $data, FALSE);

@@ -20,6 +20,7 @@ class Pelanggan extends CI_Controller
 		$this->form_validation->set_rules('no_tlpn', 'No telpon', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 		$this->form_validation->set_rules('kode_post', 'Kode Post', 'required', array('required' => '%s Mohon untuk diisi!!!'));
+		$this->form_validation->set_rules('jenis_kel', 'Jenis Kelamin', 'required', array('required' => '%s Mohon untuk diisi!!!'));
 
 		if ($this->form_validation->run() ==  FALSE) {
 			$data = array(
@@ -34,6 +35,7 @@ class Pelanggan extends CI_Controller
 				'password' => $this->input->post('password'),
 				'no_tlpn' => $this->input->post('no_tlpn'),
 				'alamat' => $this->input->post('alamat'),
+				'jenis_kel' => $this->input->post('jenis_kel'),
 				'kode_post' => $this->input->post('kode_post'),
 			);
 			$this->m_pelanggan->register($data);
