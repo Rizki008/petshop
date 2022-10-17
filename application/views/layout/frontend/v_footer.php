@@ -112,6 +112,20 @@
 	}
 	// ]]>
 </script>
+<!-- <script type="text/javascript" src="<?= base_url('assets/rating/') ?>js/star-rating.js"></script>
+<script type="text/javascript" src="<?= base_url('assets/rating/') ?>js/bootstrap.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var $inp = $('.rating-input');
+		$inp.rating({
+			min: 0,
+			max: 5,
+			step: 1,
+			size: 'sm',
+			showClear: false
+		});
+	});
+</script> -->
 </body>
 
 </html>

@@ -14,7 +14,7 @@
 					<li><?php if ($this->session->userdata('email') == "") { ?>
 							<a href="<?= base_url('pelanggan/login') ?>"><i class="fa fa-user-o"></i> Login</a>
 						<?php } else { ?>
-							<a href="#"><i class="fa fa-user-o"></i> <?= $this->session->userdata('nama'); ?></a>
+							<a href="<?= base_url('pelanggan/profil') ?>"><i class="fa fa-user-o"></i> <?= $this->session->userdata('nama'); ?></a>
 						<?php } ?>
 					</li>
 				</ul>

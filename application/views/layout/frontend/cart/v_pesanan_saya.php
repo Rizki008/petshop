@@ -62,7 +62,7 @@
 										<td>
 											<?php if ($value->status_bayar == 0) { ?>
 												<a href="<?= base_url('pesanan_saya/bayar/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Bayar</a>
-												<button class="btn btn-sm btn-flat btn-danger" data-toggle="modal" data-target="#dibatalkan<?= $value->id_transaksi ?>">Batalkan</button>
+												<!-- <button class="btn btn-sm btn-flat btn-danger" data-toggle="modal" data-target="#dibatalkan<?= $value->id_transaksi ?>">Batalkan</button> -->
 											<?php } ?>
 										</td>
 									</tr>
@@ -103,7 +103,9 @@
 										<td>Rp. <?= number_format($value->total_bayar, 0) ?>
 											<label class="badge badge-success">Selesai</label>
 										</td>
-										<td class="text-info"><?= $value->no_resi ?></td>
+										<td class="text-info"><?= $value->no_resi ?>
+										<td><a href="<?= base_url('pesanan_saya/detail_selesai/' . $value->id_transaksi) ?>" class="btn btn-success btn-sm">Riviews</a></td>
+										</td>
 										<td></td>
 									</tr>
 								<?php } ?>

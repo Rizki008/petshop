@@ -115,16 +115,15 @@ class Pesanan_saya extends CI_Controller
 	}
 
 	//pemesanan selesai deteail & review produk
-	public function detail_selesai($no_order)
+	public function detail_selesai($id)
 	{
-		$this->form_validation->set_rules('isi', 'Catatan', 'required', array('required' => '%s Mohon untuk Diisi!!!'));
-		$this->form_validation->set_rules('nama_pelanggan', 'Catatan', 'required', array('required' => '%s Mohon untuk Diisi!!!'));
-
 		$data = array(
 			'title' => 'Pesanan',
-			'pesanan_detail' => $this->m_transaksi->pesanan_detail($no_order),
-			'info' => $this->m_transaksi->info($no_order),
-			'isi' =>  'layout/frontend/cart/v_detail_pesanan_selesai'
+			'pesanan_detail' => $this->m_transaksi->pesanan_detail($id),
+			'info' => $this->m_transaksi->info($id),
+			'detail' => $this->m_transaksi->detail_pesanan($id),
+
+			'isi' =>  'layout/frontend/cart/v_pesanan_detail_selesai'
 		);
 		$this->load->view('layout/frontend/v_wrapper', $data, FALSE);
 	}

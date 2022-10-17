@@ -76,13 +76,13 @@ class M_transaksi extends CI_Model
 		return $this->db->get()->result();
 	}
 
-	public function pesanan_detail($no_order)
+	public function pesanan_detail($id)
 	{
 		$this->db->select('*');
 		$this->db->from('transaksi');
 		$this->db->join('rinci_transaksi', 'transaksi.no_order = rinci_transaksi.no_order', 'left');
 		$this->db->join('produk', 'rinci_transaksi.id_produk = produk.id_produk', 'left');
-		$this->db->where('transaksi.no_order', $no_order);
+		$this->db->where('transaksi.id_transaksi', $id);
 		return $this->db->get()->result();
 	}
 
@@ -120,5 +120,34 @@ class M_transaksi extends CI_Model
 		$this->db->group_by('pelanggan.id_pelanggan');
 		$this->db->order_by('qty', 'desc');
 		return $this->db->get()->result();
+	}
+
+	public function info($id)
+	{
+		$this->db->select('*');
+		$this->db->from('transaksi');
+		$this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
+		$this->db->group_by('pelanggan.id_pelanggan');
+		$this->db->where('id_transaksi', $id);
+		return $this->db->get()->result();
+	}
+
+	public function insert_riview()
+	{
+		$data = array(
+			'id_pelanggan' => $this->session->userdata('id_pelanggan'),
+			'id_produk' => $this->input->post('id_produk'),
+			// 'info_penilaian' => $this->input->post('rating'),
+			'tanggal' => date('Y-m-d'),
+			'review' => $this->input->post('review')
+		);
+		$this->db->insert('penilaian_pelanggan', $data);
+	}
+
+	public function detail_produk($id)
+	{
+		$data['produk'] = $this->db->query("SELECT * FROM `produk` JOIN diskon ON produk.id_barang = diskon.id_barang WHERE produk.id_barang='" . $id . "'")->row();
+		$data['review'] = $this->db->query("SELECT * FROM `pemesanan` JOIN penilaian_pelanggan ON pemesanan.id_pemesanan=penilaian_pelanggan.id_pemesanan JOIN transaksi ON transaksi.id_transaksi=pemesanan.id_transaksi JOIN user ON transaksi.id_user=user.id_user WHERE id_barang='" . $id . "' AND info_penilaian != 0")->result();
+		return $data;
 	}
 }

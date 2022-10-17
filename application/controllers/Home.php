@@ -50,7 +50,7 @@ class Home extends CI_Controller
 			'gambar' => $this->m_home->gambar_produk($id_produk),
 			'produk' => $this->m_home->detail_produk($id_produk),
 			'related_products' => $this->m_home->related_products($id_produk),
-			// 'reviews' => $this->m_home->reviews($id_produk),
+			'reviews' => $this->m_home->reviews($id_produk),
 			'isi' => 'layout/frontend/detail/v_detail_produk'
 		);
 		$this->load->view('layout/frontend/v_wrapper', $data, FALSE);

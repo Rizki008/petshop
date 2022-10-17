@@ -113,4 +113,14 @@ class M_home extends CI_Model
 	{
 		return $this->db->query('SELECT SUM(transaksi.id_pelanggan) FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan GROUP BY transaksi.id_pelanggan')->num_rows();
 	}
+	//revies
+	public function reviews($id_produk)
+	{
+		$this->db->select('*');
+		$this->db->from('penilaian_pelanggan');
+		$this->db->join('pelanggan', 'penilaian_pelanggan.id_pelanggan = pelanggan.id_pelanggan', 'left');
+
+		$this->db->where('id_produk', $id_produk);
+		return $this->db->get()->result();
+	}
 }
